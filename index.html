@@ -41,16 +41,18 @@
                 options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
                 options.mimeType = "image/jpeg";
                 
-                var params = {};
-                params.value1 = "test";
-                params.value2 = "param";
-
-                options.params = params;
+                //var params = {};
+                //params.value1 = "test";
+                //params.value2 = "param";
+		var my_no = time();
+                options.params = {
+            	number: my_no
+        	}
                 options.chunkedMode = false;
 
                 var ft = new FileTransfer();
                 ///home/aliceson/public_html/demos/phonegap/upload.php
-                ft.upload(imageURI, "http://alicesons.org/demos/phonegap/upload.php", function(result){
+                ft.upload(imageURI, "http://alicesons.org/demos/phonegap/upload.php", options, function(result){
                     alert('successfully uploaded ' + result.response);
                 }, function(error){
                     alert('error : ' + JSON.stringify(error));
